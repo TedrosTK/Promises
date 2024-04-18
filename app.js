@@ -1,5 +1,5 @@
 //console.log(fetch("https://jsonplaceholder.typicode.com/users/1"))
-const emailRef = document.querySelector(".email");
+// const emailRef = document.querySelector(".email");
 // console.log(emailRef)
 // console.log(emailRef)
 // 1. Then
@@ -24,11 +24,47 @@ const emailRef = document.querySelector(".email");
 
 // 2. Async / Await
 
-async function main() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users/1")
-    const data = response.json()
-    console.log(data)
-    emailRef.innerHTML = data.name
+// async function main() {
+//     const response = await fetch("https://jsonplaceholder.typicode.com/users/1")
+//     const data = await response.json()
+//     emailRef.innerHTML = data.name
+// }
+
+// main();
+
+// CREATING A PROMISE
+
+const statusRef = document.querySelector(".status");
+
+
+function getSubscriptionStatus() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("VIP")
+        }, 2000);
+
+    })
 }
 
+
+async function main() {
+    const a = await getSubscriptionStatus();
+    statusRef.innerHTML = a;
+    
+}
 main();
+
+// CHALLENGE //
+
+// function getVideo(subscriptionStatus){
+//     return new Promise((resolve,reject) => {
+//         if (subscriptionStatus === "VIP"){
+//             resolve("Show Video")
+//         } else if (subscriptionStatus === "FREE") {
+//             resolve("Show trailer")
+//         } else {
+//             reject("No video")
+//         }
+
+//     })
+// }
